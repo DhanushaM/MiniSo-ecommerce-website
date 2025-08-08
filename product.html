@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product — MiniSo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">MiniSo</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
+        <a href="signin.html" id="auth-link">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="product-detail" class="product-detail"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2025 MiniSo • miniso store for portfolio</div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const id = parseInt(params.get('id'));
+      if (!id) {
+        document.getElementById('product-detail').innerHTML = '<p>Product not found.</p>';
+        return;
+      }
+      const p = products.find(x => x.id === id);
+      if (!p) {
+        document.getElementById('product-detail').innerHTML = '<p>Product not found.</p>';
+        return;
+      }
+      const container = document.getElementById('product-detail');
+      container.innerHTML = `
+        <div class="product-card-large">
+          <img src="${p.image}" alt="${p.name}">
+          <div class="product-info">
+            <h2>${p.name}</h2>
+            <p class="muted">${p.category} • ${p.short}</p>
+            <p class="desc">${p.description}</p>
+            <div class="price">₹${p.price}</div>
+            <div class="qty-row">
+              <label>Quantity:
+                <input id="qty" type="number" min="1" value="1" />
+              </label>
+            </div>
+            <div style="margin-top:12px">
+              <button id="addToCart" class="btn">Add to Cart</button>
+              <a class="btn alt" href="products.html">Back to products</a>
+            </div>
+            <div id="login-warning" class="login-warning hidden">You need to <a href="signin.html">login</a> to checkout.</div>
+          </div>
+        </div>
+      `;
+      document.getElementById('addToCart').addEventListener('click', () => {
+        const qty = parseInt(document.getElementById('qty').value) || 1;
+        addProductToCart(p.id, qty);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MiniSo — Cute & Minimal Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">MiniSo</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
+        <a href="signin.html" id="auth-link">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Cute finds for everyday joy</h1>
+        <p>Discover playful stationery, cozy plushies, and practical home accessories — designed to make small moments happy.</p>
+        <div class="hero-actions">
+          <a class="btn" href="products.html">Shop Products</a>
+          <a class="btn alt" href="signin.html">Sign In</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="assets/images/products/cute.jpeg" alt="MiniSo Cute Products" />
+      </div>
+    </section>
+
+    <section class="featured">
+      <h2>Featured</h2>
+      <div id="featured-list" class="product-grid"></div>
+    </section>
+
+    <section class="about">
+      <h3>About MiniSo</h3>
+      <p>MiniSo is a multi-page front-end e-commerce demo featuring product browsing, a responsive shopping cart, and simple authentication via localStorage. Designed with a clean, minimalist UI, it showcases skills in HTML, CSS, and JavaScript for creating engaging online shopping experiences.
+</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2025 MiniSo • Demo store for portfolio</div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      // render featured (first 4 products)
+      renderProductGrid('featured-list', products.slice(0,4));
+    });
+  </script>
+</body>
+</html>

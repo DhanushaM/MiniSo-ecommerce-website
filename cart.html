@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cart — MiniSo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">MiniSo</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html" class="active">Cart</a>
+        <a href="about.html">About</a>
+        <a href="signin.html" id="auth-link">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Your Cart</h1>
+    <div id="cart-list" class="cart-list"></div>
+    <div class="cart-actions">
+      <div class="cart-summary">Total: <strong>₹<span id="cart-total">0</span></strong></div>
+      <div>
+        <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+        <button id="clear-btn" class="btn alt">Clear Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2025 MiniSo • Demo store for portfolio</div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartList();
+      document.getElementById('clear-btn').addEventListener('click', () => {
+        if(confirm('Clear cart?')) {
+          clearCart();
+          renderCartList();
+        }
+      });
+      document.getElementById('checkout-btn').addEventListener('click', () => {
+        const user = getCurrentUser();
+        if(!user) {
+          if (confirm('You must login before checkout. Go to sign-in page?')) location.href='signin.html';
+          return;
+        }
+        alert('Order placed (demo). Thank you, ' + user.name + '!');
+        clearCart();
+        renderCartList();
+      });
+    });
+  </script>
+</body>
+</html>

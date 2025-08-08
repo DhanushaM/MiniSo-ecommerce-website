@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products — MiniSo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">MiniSo</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
+        <a href="signin.html" id="auth-link">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">All Products</h1>
+    <div id="product-list" class="product-grid"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2025 MiniSo • miniso store for portfolio</div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProductGrid('product-list', products);
+    });
+  </script>
+</body>
+</html>
