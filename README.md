@@ -21,3 +21,6 @@ Push to GitHub and enable Pages on the main branch.
 
 ## Notes
 This is a demo—do not use client-side auth for production.
+
+## Check live here
+ https://dhanusham.github.io/MiniSo-ecommerce-website/
